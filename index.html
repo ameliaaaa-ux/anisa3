@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Music - International Fan Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Main Color: Soft Blue-Gray */
+            --artist-accent: #64748b; 
+            --artist-accent-rgb: 100, 116, 139;
+            /* Accent: Dark Navy (Soft Black) */
+            --accent-dark: #0f172a;
+            /* Secondary: Light Gray / Beige */
+            --color-secondary: #e2e8f0;
+            /* Background: Bone White */
+            --color-bg: #f9f8f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: var(--color-bg);
+            color: var(--accent-dark);
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: var(--color-bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(var(--artist-accent-rgb), 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(226, 232, 240, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(var(--artist-accent-rgb), 0.03) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(212, 212, 216, 0.1) 0px, transparent 50%);
+            filter: blur(80px);
+            animation: mesh-flow 30s ease-in-out infinite alternate;
+        }
+        @keyframes mesh-flow {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.08) translate(1.5%, 1.5%); }
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.02);
+        }
+        .accent-text { color: var(--artist-accent); }
+        .accent-bg { background-color: var(--artist-accent); }
+        .accent-border { border-color: rgba(var(--artist-accent-rgb), 0.3); }
+        
+        .btn-primary {
+            background-color: var(--accent-dark);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(15, 23, 42, 0.5);
+        }
+
+        .title-reveal {
+            background: linear-gradient(to bottom, var(--accent-dark) 30%, rgba(15, 23, 42, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        img {
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        img.loaded {
+            opacity: 1;
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Breaking News Ticker */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            height: 32px;
+            background-color: var(--accent-dark);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 40s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--artist-accent-rgb), 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--artist-accent); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="mesh-bg"></div>
+    <div id="root"></div>
+</body>
+</html>
